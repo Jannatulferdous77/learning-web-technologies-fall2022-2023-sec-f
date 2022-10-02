@@ -1,6 +1,6 @@
-<Mobile_Company>
+<MOBILE_COMPANY>
 
-	<Mobile ID="1">
+	<MOBILE ID="1">
 
 		<ID>11</ID>
 		<NAME>Samsung</NAME>
@@ -8,9 +8,9 @@
 		<STOCK>50</STOCK>
 		<STATUS>1</STATUS>
 
-	</Mobile>
+	</MOBILE>
 
-	<Mobile ID="2">
+	<MOBILE ID="2">
 
 		<ID>20</ID>
 		<NAME>HTC</NAME>
@@ -18,9 +18,9 @@
 		<STOCK>35</STOCK>
 		<STATUS>0</STATUS>
 
-	</Mobile>
+	</MOBILE>
 
-	<Mobile ID="3">
+	<MOBILE ID="3">
 
 		<ID>23</ID>
 		<NAME>Nokia</NAME>
@@ -28,6 +28,6 @@
 		<STOCK>100</STOCK>
 		<STATUS>1</STATUS>
 
-	</Mobile>
+	</MOBILE>
 
-</Mobile_Company>
+</MOBILE_COMPANY>

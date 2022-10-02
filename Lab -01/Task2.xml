@@ -1,6 +1,6 @@
-<Admission_info>
+<ADMISSION_INFO>
 
-	<Student no="1">
+	<STUDENT no="1">
 
 		<SL>23</SL>
 		<NAME>John Carter</NAME>
@@ -11,9 +11,9 @@
         </ADMISSION_DATE>
 
 
-	</Student>
+	</STUDENT>
 
-	<Student no="2">
+	<STUDENT no="2">
 
 		<SL>29</SL>
 		<NAME>Bob Marshal</NAME>
@@ -23,10 +23,10 @@
             <YEAR>1999</YEAR>
         </ADMISSION_DATE>
 
-	</Student>
+	</STUDENT>
 
 
-	<Student no="3">
+	<STUDENT no="3">
 
 		<SL>35</SL>
 		<NAME>Clark Kent</NAME>
@@ -36,6 +36,6 @@
             <YEAR>2005</YEAR>
         </ADMISSION_DATE>
 
-	</Student>
+	</STUDENT>
 
-</Admission_info>
+</ADMISSION_INFO>
