@@ -1,0 +1,75 @@
+body{
+  background-image: url("../assects/train2.jpg");
+  background-size: 1600px 800px;
+  background-repeat: no-repeat;
+}
+
+.box{
+  display: flex;
+  padding-left: 100px;
+  padding-top: 10px;
+}
+
+.box1{
+  padding-left: 100px;
+  padding-right: 80px;
+  padding-top: 18px;
+}
+
+.box2{
+  border-radius: 6px;
+  border: solid;
+}
+
+.box a{
+
+}
+
+.title0{
+  padding-right: 350px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.title{
+  padding-right: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+
+.title1{
+  padding-right: 114px;
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+
+.title2{
+  padding-right: 118px;
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+
+.title3{
+  padding-right: 39px;
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+
+.title4{
+  font-size: 20px;
+  font-weight: bold;
+  
+}
+.inputBox{
+  padding-right: 80px;
+
+}
+.inputBox1{
+  padding: 4px;
+  border-radius: 6px;
+
+}
