@@ -7,7 +7,6 @@
     $password = $_POST['password'];
     $ConfirmPassword = $_POST['ConfirmPassword'];
     $gender = $_POST['gender'];
-    $category = $_POST['category'];
     $dob = $_POST['dob'];
 
 
@@ -16,7 +15,7 @@
     $lowercase = preg_match('@[a-z]@', $password);
     $specialChars = preg_match('@[^\w]@', $password);
 
-    if($name == "" || $email == "" || $username == "" || $password == "" || $ConfirmPassword == "" || $gender == "" || $category == "" || $dob == "")
+    if($name == "" || $email == "" || $username == "" || $password == "" || $ConfirmPassword == "" || $gender == "" || $dob == "")
     {
         header('location: ../views/reg.php?err=null');
     }
@@ -31,61 +30,25 @@
         header('location: ../views/reg.php?err=incorrect');
     }
 
-    else if($category == 'user')
+    
+    else if(userExist($username,$email))
     {
-            // $con = mysqli_connect('localhost', 'root', '','webtech');
-            // $sql = "select * from admin1 where username='{$username}'";
-            // $result = mysqli_query($con, $sql);
-            // $count = mysqli_num_rows($result);
-
-            if($count)
-            {
-                header('location: reg.php?err=idexist');
-            }
-            else
-            {
-                // $sql = "insert into admin1 values('{$name}', '{$email}','{$username}','{$password}','{$ConfirmPassword}','{$gender}','{$category}','{$dob}')";
-                // $status = mysqli_query($con, $sql);
-                $user = ['name'=>$name, 'email'=>$email, 'username'=>$username, 'password'=>$password, 'ConfirmPassword'=>$ConfirmPassword, 'gender'=>$gender, 'category'=>$category, 'dob'=>$dob,];
-                $status = insertUser($user);
-                if($status)
-                {
-
-                    header('location: ../views/login.php');
-                }
-                else
-                {
-                    echo "DB error";
-                }
-            }
+        header('location: ../views/reg.php?err=exist');
     }
-
-    else if($category == 'admin')
+    else
     {
-        // $con = mysqli_connect('localhost', 'root', '','webtech');
-        // $sql = "select * from users where username='{$username}'";
-        // $result = mysqli_query($con, $sql);
-        // $count = mysqli_num_rows($result);
 
-
-        if($count > 0)
+        $user = ['name'=>$name, 'email'=>$email, 'username'=>$username, 'password'=>$password, 'ConfirmPassword'=>$ConfirmPassword, 'gender'=>$gender, 'dob'=>$dob,];
+        $status = insertUser($user);
+        if($status)
         {
-            header('location: reg.php?err=idexist');
+
+            header('location: ../views/login.php');
         }
         else
         {
-            $admin = ['name'=>$name, 'email'=>$email, 'username'=>$username, 'password'=>$password, 'ConfirmPassword'=>$ConfirmPassword, 'gender'=>$gender, 'category'=>$category, 'dob'=>$dob,];
-            $status = insertAdmin($admin);
-
-            if($status)
-            {
-
-                header('location: ../views/login.php');
-            }
-            else
-            {
-                echo "DB error";
-            }
+            echo "DB error";
         }
     }
+    
 ?>

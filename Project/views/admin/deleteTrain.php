@@ -41,8 +41,6 @@ session_start();
     <title>Delete Train</title>
 </head>
     <body>
-    <!-- <a href="../views/dashboard.php">Home</a>&nbsp <a href="addTrain.php">Add Train </a> &nbsp <a href="../views/viewtrain.php">Display Trains </a>
-    <br><br> -->
     <fieldset>
     <legend>Delete Train</legend>
         <form method="post" action="../../controllers/admin/deleteTrainVal.php" enctype=""> 

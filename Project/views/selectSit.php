@@ -1,54 +1,45 @@
 <?php 
 
 session_start();
-    if(!isset($_COOKIE['adminStatus']))
+if(!isset($_COOKIE['status']))
+{
+    header('location: login.php?err=bad_request');
+}
+	if (isset($_GET['selectSit'])) 
     {
-        header('location: signin.php?err=bad_request');
-    }
+		$trainname = $_GET['selectSit'];
+        $_SESSION['trainname']=$trainname;
 
-	if (isset($_GET['err'])) 
-    {
-		if($_GET['err'] == 'null')
-
-        echo"Must be filled all information...";
-		 
-		  
-	}
-	if (isset($_GET['delete'])) 
-    {
-		$name = $_GET['delete'];
-
-        setcookie('row_name',$name,time()+60*60,'/');
-		 
-		  
+        setcookie('row_name',$trainname,time()+60*60,'/');	  
 	}
 
     $con = mysqli_connect('localhost', 'root', '', 'webtech');
-    $sql = "select * from train where trainName='{$name}'";
+    $sql = "select * from train where trainName='{$trainname}'";
     $result = mysqli_query($con, $sql);
+
 
     $data  = mysqli_fetch_assoc($result);
 
     if (!isset($data))
     { 
-        header('location: viewSchedule.php?err=null_values');
+        header('location: bookTicket.php?err=null_values');
     }
 ?>
 
 
 <html>
 <head>
-    <title>Delete Schedule</title>
+    <title>Select Ticket</title>
 </head>
     <body>
     <fieldset>
-    <legend>Delete Train</legend>
-        <form method="post" action="../../controllers/admin/deleteScheduleC.php" enctype=""> 
+    <legend>Select Ticket</legend>
+        <form method="post"  enctype="" action="payment.php"> 
             <table>    
                 
                 <tr>
                     <td>
-                        Train Name:
+                        Train Name
                     </td>
                     <td>
                         <?php echo $data['trainName']; ?>
@@ -56,7 +47,7 @@ session_start();
                 </tr>
                 <tr>
                     <td>
-                        From Station:
+                        From Station
                     </td>
                     <td>
                         <?php echo $data['fromStation']; ?>
@@ -64,13 +55,12 @@ session_start();
                 </tr>
                 <tr>
                     <td>
-                        Start Time:
+                        Start Time
                     </td>
                     <td>
                         <?php echo $data['startTime']; ?>
                     </td>
                 </tr>
-
                 <tr>
                     <td>
                         To Station:
@@ -81,7 +71,7 @@ session_start();
                 </tr>
                 <tr>
                     <td>
-                        Arrival Time:
+                        Arrival Time
                     </td>
                     <td>
                         <?php echo $data['arrivalTime']; ?>
@@ -90,15 +80,17 @@ session_start();
                 
                 <tr>
                     <td>
-                        Date Of Journey:
+                        Date of Journey
                     </td>
                     <td>
                         <?php echo $data['dateOfJourney']; ?>
                     </td>
                 </tr>
+                
                 <tr>
                     <td colspan="2">
-                        <input type="submit" value="Delete" name="delete">
+                        <input type="submit" value="Book" name="book">
+                        <a href="bookTicket.php">Back</a>
                     </td>
                 </tr>
 

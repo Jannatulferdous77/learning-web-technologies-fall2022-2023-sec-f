@@ -1,6 +1,28 @@
 <?php
-include'../../models/connect.php';
-if(!isset($_COOKIE['adminStatus']))
+    session_start();
+    if(isset($_GET['err']))
+    {
+        if($_GET['err'] == 'null')
+        {
+            echo"Must be filled all info....";
+        }
+        if($_GET['err'] == 'same')
+        {
+            echo"From and To station must be different....";
+        }
+        if($_GET['err'] == 'trExist')
+        {
+            echo"This Train is already exist....";
+        }
+    }
+    if(isset($_GET['success']))
+    {
+        if($_GET['success'] == 'yes')
+        {
+            echo"Schedule Added Successfully";
+        }
+    }
+    if(!isset($_COOKIE['adminStatus']))
 {
     header('location: signin.php?err=bad_request');
 }
@@ -8,91 +30,121 @@ if(!isset($_COOKIE['adminStatus']))
 
 <html>
 <head>
-    <title>Search Train</title>
+    <title>Train Details Insertion</title>
 </head>
 <body>
 <center>
-    <form method="post">
+<form method="post" action="../../controllers/admin/addScheduleC.php">
         <table border="2px">
             <tr>
                 <td width="300px">
-                <a href="home.php"> <img src="../assects/train.jpg" width="30px">Railway E-ticket Service</a>
+                    <img src="../assects/train.jpg" width="30px">Railway E-ticket Service
                 </td>
                 <td align="left">
-                    <a href="home.php">Home</a> |
-                    <a href="../controllers/logout.php">logout</a> |
-                    <a href="reg.php">Registration</a>
+                    <a href="dashboard.php">Dashboard</a> |
+                    <a href="../controllers/logout.php">Logout</a> |
+                    <a href="`../reg.php">Registration</a>
                 </td>
             </tr>
             <tr>
-                <td>
-                <select name="searchTrain">
-                    <option>Select Train</option>                              
-                    <option value="1">SUNDARBAN EXPRESS</option>
-                    <option value="2">CHITRA EXPRESS</option>
-                    <option value="3">BENAPOLE EXPRESS</option>
-                    <option value="4">DHUMKETU EXPRESS</option>
-                </select></br>
-                <input type="submit" name="search">
-
-                </td>
-                <td>
-            
-                <?php 
-                    if(isset($_POST['search']))
-                    {
-                        $searchTrain = $_POST['searchTrain'];
-                        $sql = "select * from `traininfo` where id = '$searchTrain'";
-                        $result = mysqli_query($con, $sql);
-                        $rowNum = mysqli_fetch_assoc($result);
-                        if($result)
-                        {
-                            if(mysqli_num_rows($result)>0)
-                            {
-                                
-                                echo
-                                '<table>
-                                    <tr>
-                                        
-                                        <th>Train Name</th>
-                                        <th>From Station</th>
-                                        <th>Arrival Time</th>
-                                        <th>To Station</th>
-                                        <th>Arrival Time</th>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td>'.$rowNum['trainName'].'</td>
-                                        <td>'.$rowNum['fromStation'].'</td>
-                                        <td>'.$rowNum['arrivalF'].'</td>
-                                        <td>'.$rowNum['toStation'].'</td>
-                                        <td>'.$rowNum['arrivalT'].'</td>
-                                    </tr>
-                                    
-                                    <tr>
-                                    <input type="submit" name="addShedule" value="ADD">
-                                    
-                                    </tr>
-                                    
-                                    
-                                </table>';
-                                if(isset($_POST['addShedule']))
-                                    {
-                                        header('location: nextpage.php');
-                                        echo"Data saved";
-                                    }
-                            }
+            <td colspan=2 align="center">
+                    <fieldset>
+                        <table>
+                            <tr>
+                                <td>
+                                    Train Name 
+                                </td>
+                                <td>
+                                <select name="trainName">
+                                        <option value>Select train name</option>
+                                        <option value="Chitra Exress">Chitra Exress</option>
+                                        <option value="Sundarban Exress">Sundarban Exress</option>
+                                        <option value="Rajshahi Exress">Rajshahi Exress</option>
+                                        <option value="Rangpur Exress">Rangpur Exress</option>
+                                        <option value="Sylhet Exress">Sylhet Exress</option>
+                                        <option value="Chottogram Exress">Chottogram Exress</option>
+                                        <option value="Dhumketu Exress">Dhumketu Exress</option>
+                                        <option value="Barishal Exress">Barishal Exress</option>
+                                        <option value="Dhaka Exress">Dhaka Exress</option>
+                                        <option value="Maymensingh Exress">Maymensingh Exress</option>
+                                        <option value="Agarosindur Exress">Agarosindur Exress</option>
+                                    </select></br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    From Station
+                                </td>
+                                <td>
+                                    <select name="fromStation">
+                                        <option value>Select From Station</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Khulna">Khulna</option>
+                                        <option value="Chottogram">Chottogram</option>
+                                        <option value="Barishal">Barishal</option>
+                                        <option value="Rangpur">Rangpur</option>
+                                        <option value="Maymensingh">Maymensingh</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                    </select></br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Start time
+                                </td>
+                                <td>
+                                    <input type="time" name="startTime"><br>
+                                </td>
+                            </tr>
                             
-                            else
-                            {
+                            <tr>
+                                <td>
+                                    To Station
+                                </td>
+                                <td>
+                                    <select name="toStation">
+                                        <option value>Select To Station</option>
+                                        <option value="Dhaka">Dhaka</option>
+                                        <option value="Sylhet">Sylhet</option>
+                                        <option value="Khulna">Khulna</option>
+                                        <option value="Chottogram">Chottogram</option>
+                                        <option value="Barishal">Barishal</option>
+                                        <option value="Rangpur">Rangpur</option>
+                                        <option value="Maymensingh">Maymensingh</option>
+                                        <option value="Rajshahi">Rajshahi</option>
+                                    </select></br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Arrival time
+                                </td>
+                                <td>
+                                    <input type="time" name="arrivalTime"><br>
+                                </td>
+                            </tr>
+                          
+                            <tr>
+                                <td>
+                                    Date of Journey
+                                </td>
+                                <td>
+                                    <input type="date" name="dateOfJourney"><br>
                                 
-                                echo'Data not found';
-                            }
-                        }
-                    }
-                
-                ?>
-                <td>
+                                </td>
+                            </tr>
+
+                        </table>
+                       
+                       
+                        
+                        <br>
+                        <input type="submit" value="ADD" name="addTrain">
+                        <input type="button" value="Back" onclick="history.back()">
+                        
+                    </fieldset>
+                </td>
             </tr>
             <tr>
                 <td colspan=2 align="center">
@@ -104,3 +156,4 @@ if(!isset($_COOKIE['adminStatus']))
 </center>
 </body>
 </html>
+                              

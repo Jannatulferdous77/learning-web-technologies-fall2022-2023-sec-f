@@ -26,92 +26,82 @@ if(isset($_GET['err']))
 <html>
 <head>
     <title>Registration</title>
-    <link rel="stylesheet" href="..assect/css/reg.css"> 
 </head>
 <body>
 <center>
 <form action="../controllers/regC.php" method ="post">
-        <table border="3px">
-          <div class="box">
-            <div class="title0">
-            Railway E-ticket Service
-            </div>
-            <div>
-                <a href="home.php">Home</a> 
-                    <a href="login.php">Login</a> 
+        <table border="2px">
+            <tr>
+                <td width="300px">
+                    <img src="../assects/train.jpg" width="30px">Railway E-ticket Service
+                </td>
+                <td align="left">
+                    <a href="home.php">Home</a> |
+                    <a href="login.php">Login</a> |
                     <a href="reg.php">Registration</a>
-            </div>
-          </div>
-                 
+                </td>
+            </tr>
             <tr>
                 <td colspan=2 align="center">
-                    
+                    <fieldset>
                         <table>
-                            <div class="box">
-                            <div class="title">Name </div>
-                        <div class="inputBox">
-                             <input type="text" name="name" size="50" class="inputBox1">
-                        </div>
-                        </div>
-                        <div class="box">
-                         <div class="title">
-                            Email
-                         </div>
-                        <div class="inputBox">
-                          <input type="email" name="email"  size="50" class="inputBox1">
-                        </div>
-                        </div>
-                            
-                        <div class="box">
-                         <div class="title1">
-                            Username 
-                         </div>
-                        <div class="inputBox">
-                          <input type="text" name="username" size="50" class="inputBox1" >
-                        </div>
-                        </div>
-
-
-                        <div class="box">
-                         <div class="title2">
-                             Password 
-                         </div>
-                        <div class="inputBox">
-                          <input type="password" name="password" size="50" class="inputBox1">
-                        </div>
-                        </div>
-                          
-                        
-                        <div class="box">
-                         <div class="title3">
-                             Confirm Password 
-                         </div>
-                        <div class="inputBox">
-                          <input type="password" name="ConfirmPassword" size="50" class="inputBox1">
-                        </div>
-                        </div>
-               
+                            <tr>
+                                <td>
+                                    Name 
+                                </td>
+                                <td>
+                                    <input type="text" name="name"><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Email
+                                </td>
+                                <td>
+                                    <input type="email" name="email"><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Username 
+                                </td>
+                                <td>
+                                    <input type="text" name="username"><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Password 
+                                </td>
+                                <td>
+                                    <input type="password" name="password"><br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Confirm Password
+                                </td>
+                                <td>
+                                    <input type="password" name="ConfirmPassword"><br>
+                                </td>
+                            </tr>
                         </table>
-                        <div class="box1">
-                            <fieldset class="box2">
-                            <legend align="center" class="title4">Gender</legend>
+                        <fieldset>
+                            <legend align="center">Gender</legend>
                             <input type="radio" name="gender" value="male"/> Male 
                             <input type="radio" name="gender" value="female"/> Female 
                             <input type="radio" name="gender" value="other"/> Other
-                            </fieldset>
-                        </div>
-                        <div class="box1">
-                        <fieldset class="box2">
-                            <legend  align="center" class="title4">Date of Birth</legend>
+                        </fieldset>
+                        
+                        <fieldset>
+                            <legend  align="center">Date of Birth</legend>
                             <input type="date" name="dob"> 
                         </fieldset>
-                        </div>
                         
                         <br>
                         <input type="submit" name="btn" value="Submit"/>
                         <input type="reset" name="reset" placeholder="Reset">
-                    
-             
+                    </fieldset>
                 </td>
             </tr>
             <tr>

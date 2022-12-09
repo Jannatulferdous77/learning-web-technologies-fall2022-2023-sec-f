@@ -1,26 +1,7 @@
 <?php
-    session_start();
-    if(isset($_GET['err']))
-    {
-        if($_GET['err'] == 'null')
-        {
-            echo"Must be filled all info....";
-        }
-        if($_GET['err'] == 'trExist')
-        {
-            echo"This Train is already exist....";
-        }
-    }
-    if(isset($_GET['success']))
-    {
-        if($_GET['success'] == 'yes')
-        {
-            echo"Train Added Successfully";
-        }
-    }
-    if(!isset($_COOKIE['adminStatus']))
+if(!isset($_COOKIE['status']))
 {
-    header('location: signin.php?err=bad_request');
+    header('location: ../signin.php?err=bad_request');
 }
 ?>
 
@@ -30,16 +11,16 @@
 </head>
 <body>
 <center>
-<form method="post" action="../../controllers/admin/addTrVal.php">
+<form action="../controllers/addTrVal.php" method="post">
         <table border="2px">
             <tr>
                 <td width="300px">
-                    <img src="../assects/train.jpg" width="30px">Railway E-ticket Service
+                    <img src="../photo/train.jpg" width="30px">Railway E-ticket Service
                 </td>
                 <td align="left">
                     <a href="dashboard.php">Dashboard</a> |
-                    <a href="../controllers/logout.php">Logout</a> |
-                    <a href="`../reg.php">Registration</a>
+                    <a href="../logout.php">Logout</a> |
+                    <a href="reg.php">Registration</a>
                 </td>
             </tr>
             <tr>
@@ -51,52 +32,39 @@
                                     Train Name 
                                 </td>
                                 <td>
-                                <input type="text" name = "trainName">
+                                <select name="name">
+                                <option value>Add a train</option>                              
+                                <option value="SUNDARBAN EXPRESS">SUNDARBAN EXPRESS</option>
+                                <option value="CHITRA EXPRESS">CHITRA EXPRESS</option>
+                                <option value="BENAPOLE EXPRESS">BENAPOLE EXPRESS</option>
+                                <option value="DHUMKETU EXPRESS">DHUMKETU EXPRESS</option>
+                                </select></br>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    From Sattion
+                                    From 
                                 </td>
                                 <td>
-                                    <input type="text" name="fromStation"><br>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    Start Time
-                                </td>
-                                <td>
-                                    <input type="time" name="startTime"><br>
+                                    <input type="text" name="from"><br>
                                 </td>
                             </tr>
-                            
                             <tr>
                                 <td>
-                                    To Station
+                                    Destination
                                 </td>
                                 <td>
-                                    <input type="text" name="toStation"><br>
+                                    <input type="text" name="destination"><br>
                                 </td>
                             </tr>
                           
-                            <tr>
-                                <td>
-                                    Arrival Time
-                                </td>
-                                <td>
-                                    <input type="time" name="arrivalTime"><br>
-                                </td>
-                            </tr>
                             
                             <tr>
                                 <td>
                                     Offday
                                 </td>
                                 <td>
-                                    <input type="day" name="offday"><br>
-                                
+                                <input type="text" name="offday"><br>
                                 </td>
                             </tr>
 
@@ -105,7 +73,7 @@
                        
                         
                         <br>
-                        <input type="submit" value="ADD" name="addTrain">
+                        <button type="submit">Insert Details</button>
                         <input type="button" value="Back" onclick="history.back()">
                         
                     </fieldset>

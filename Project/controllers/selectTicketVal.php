@@ -5,10 +5,10 @@ require_once'../../models/trainModel.php';
 if(isset($_COOKIE['row_name'])){
 $row_name=$_COOKIE['row_name'];
 
-        $status = deleteSchedule($row_name);
+        $status = deleteTrain($row_name);
         if($status)
         {
-            header('location: ../../views/admin/viewSchedule.php?message=delete_successful');
+            header('location: ../../views/admin/viewtrain.php?message=delete_successful');
 
             setcookie('row_name',$row_name,time()-60,'/');
         }else{
@@ -16,7 +16,7 @@ $row_name=$_COOKIE['row_name'];
 
            setcookie('row_name',$row_name,time()-60,'/');
 
-           header('location: ../../views/admin/viewSchedule.php?message=delete_failed');
+           header('location: ../../views/admin/viewtrain.php?message=delete_failed');
         }
 
 }
@@ -31,6 +31,6 @@ else{
 
            setcookie('row_name',$row_name,time()-60,'/');
 
-           header('location: ../views/viewSchedule.php?err=delete_failed');
+           header('location: ../views/viewtrain.php?err=delete_failed');
         
 }

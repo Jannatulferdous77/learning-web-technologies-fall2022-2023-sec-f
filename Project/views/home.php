@@ -19,7 +19,7 @@ if(!isset($_COOKIE['status']))
                 </td>
                 <td align="left">
                     <a href="home.php">Home</a> |
-                    <a href="signin.php">Login</a> |
+                    <a href="../controllers/logout.php">logout</a> |
                     <a href="userProfile.php">Profile</a>
                 </td>
             </tr>
@@ -27,12 +27,13 @@ if(!isset($_COOKIE['status']))
                 <td colspan="2" align="left">
                     <a href="trainInfo.php">Train Information</a></br>
                     <a href="bookTicket.php">Book Ticket</a> </br>
+                    <a href="viewTicket.php">View Ticket</a> </br>
                     <a href="cancelTicket.php">Cancel Ticket</a> </br>
                 </td>
             </tr>
             <tr>
                 <td colspan=2 align="center">
-                    Presented by: Nazmul, Jannat, Aditya, Uma
+                    Presented by: Nazmul, Jannat
                 </td>
             </tr>
         </table>
